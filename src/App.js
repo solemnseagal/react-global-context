@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useStateValue } from "./StateProvider";
+import LoginForm from "./components/LoginForm";
+import Container from "@mui/material/Container";
+import { Typography } from "@material-ui/core";
+import InputLabel from "@mui/material/InputLabel";
+import { TextField } from "@material-ui/core";
 
-function App() {
+const App = () => {
+  const [{ count, user }, dispatch] = useStateValue();
+
+  const clickMe = () => {
+    dispatch({ type: "INCREMENT" });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Typography variant="h3">
+        {count} Hello world! from {user}
+      </Typography>
+      <button onClick={clickMe}> Click Me</button> */}
+      <Container style={{ maxWidth: 300, marginTop: 40 }} disableGutters>
+        <LoginForm />
+      </Container>
     </div>
   );
-}
+};
 
 export default App;
