@@ -1,14 +1,22 @@
+import { constants } from "./constants";
+
 export const initialState = {
-  user: "Solemn",
-  count: 0,
+  user: "",
+  loginSuccess: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case constants.LOGIN:
       return {
         ...state,
-        count: state.count + 1,
+        loginSuccess: true,
+      };
+
+    case constants.SETUSER:
+      return {
+        ...state,
+        user: action.username,
       };
     default:
       return state;
